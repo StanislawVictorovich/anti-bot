@@ -11,7 +11,7 @@
     <p id='RequiredLabel'>* Required</p>
       <form (ngSubmit)="onSubmit()" #modalForm="ngForm">
         <div class="form-group">
-          <label for="inputName">Name</label>
+          <label for="inputName" class="required">Name</label>
           <input [(ngModel)]="name" 
                   type="text" class="form-control" 
                   id="inputName" 
@@ -24,7 +24,7 @@
           <small id="nameHelp" class="form-text text-muted">First & Last name</small>
         </div>        
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
+          <label for="inputEmail" class="required">Email address</label>
           <input [(ngModel)]="email" 
                   type="email" 
                   class="form-control" 
@@ -45,8 +45,8 @@
           </textarea>
         </div>
         <div class="form-group">
-          <label for="inputNumber">Human or Bot</label>
-          <input [(ngModel)]="result" 
+          <label for="inputNumber"  class="required">Human or Bot</label>
+          <input [(ngModel)]="userData.result" 
                   type="number" 
                   class="form-control" 
                   id="inputNumber" 
@@ -54,7 +54,7 @@
                   required 
                   placeholder="Enter sum in digits"
                   name="captcha">
-          <small id="emailHelp" class="form-text text-muted"><h2>{{ modalServiceValidate.getCaptcha() }}</h2></small>
+          <small id="emailHelp" class="form-text text-muted"><h2>{{ modalService.getCaptcha() }}</h2></small>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!modalForm.form.valid">Submit</button>
       </form>

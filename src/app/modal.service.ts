@@ -6,20 +6,20 @@ import { Injectable } from '@angular/core';
 export class ModalService {
   private firstNumber: number;
   private secondNumber: number;
-  private captcha: Object;
+  private captcha: string[];
   constructor () {
-    this.captcha = {
-      0: 'Zero',
-      1: 'One',
-      2: 'Two',
-      3: 'Three',
-      4: 'Four',
-      5: 'Five',
-      6: 'Six',
-      7: 'Seven',
-      8: 'Eight',
-      9: 'Nine'
-    }
+    this.captcha = [
+      'Zero',
+      'One',
+      'Two',
+      'Three',
+      'Four',
+      'Five',
+      'Six',
+      'Seven',
+      'Eight',
+      'Nine'
+    ]
     this.mixValues();
   }
   public mixValues(): void {

@@ -1,0 +1,9 @@
+#RequiredLabel {
+  color: red;
+}
+
+label.required:before
+{
+  color: red;
+  content: "* ";
+}
