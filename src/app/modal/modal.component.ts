@@ -12,12 +12,7 @@ export class ModalComponent {
   
   public modalRef: BsModalRef;
 
-  public userData = {
-    name: '',
-    email: '',
-    comments: '',
-    result: 0
-  }
+  public userData = {};
 
   constructor(private bsModalService: BsModalService, private modalService: ModalService) {
   }
@@ -28,6 +23,6 @@ export class ModalComponent {
   }
 
   public onSubmit(): void {
-    alert(this.modalService.checkCaptcha(this.userData.result));
+    alert(JSON.stringify(this.userData));
   }
 }

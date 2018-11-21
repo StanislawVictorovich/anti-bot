@@ -9,54 +9,68 @@
   </div>
   <div class="modal-body">
     <p id='RequiredLabel'>* Required</p>
-      <form (ngSubmit)="onSubmit()" #modalForm="ngForm">
+      <form name="form" (ngSubmit)="modalForm.form.valid && onSubmit()" #modalForm="ngForm" novalidate>
         <div class="form-group">
-          <label for="inputName" class="required">Name</label>
-          <input [(ngModel)]="name" 
-                  type="text" class="form-control" 
-                  id="inputName" 
-                  aria-describedby="nameHelp" 
-                  required 
-                  minlength="4"
-                  appForbiddenName="admin"
-                  placeholder="Name"
-                  name="login">
-          <small id="nameHelp" class="form-text text-muted">First & Last name</small>
-        </div>        
-        <div class="form-group">
-          <label for="inputEmail" class="required">Email address</label>
-          <input [(ngModel)]="email" 
-                  type="email" 
-                  class="form-control" 
-                  id="inputEmail" 
-                  aria-describedby="emailHelp" 
-                  required 
-                  placeholder="your@domain.com"
-                  name="email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <label for="login" class="required">Name</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="login" 
+            [(ngModel)]="userData.login" 
+            #login="ngModel" 
+            [ngClass]="{ 'is-invalid': modalForm.submitted && login.invalid }" 
+            required />
+          <div *ngIf="modalForm.submitted && login.invalid" class="invalid-feedback">
+              <div *ngIf="login.errors.required">First Name is required</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="inputTextArea">Message</label>
-          <textarea [(ngModel)]="comments" 
-                    [ngModelOptions]="{standalone: true}"
-                      class="form-control" 
-                      id="inputTextArea" 
-                      rows="3">
-          </textarea>
+          <label for="email" class="required">Email</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            name="email" 
+            [(ngModel)]="userData.email" 
+            #email="ngModel" 
+            [ngClass]="{ 'is-invalid': modalForm.submitted && email.invalid }" 
+            required 
+            email />
+          <div *ngIf="modalForm.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required">Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="inputNumber"  class="required">Human or Bot</label>
-          <input [(ngModel)]="userData.result" 
-                  type="number" 
-                  class="form-control" 
-                  id="inputNumber" 
-                  aria-describedby="emailHelp" 
-                  required 
-                  placeholder="Enter sum in digits"
-                  name="captcha">
-          <small id="emailHelp" class="form-text text-muted"><h2>{{ modalService.getCaptcha() }}</h2></small>
+          <label for="text">Message:</label>
+          <textarea
+            type="text" 
+            class="form-control" 
+            name="text" 
+            [(ngModel)]="userData.text" 
+            [ngClass]="{ 'is-invalid': modalForm.submitted && text.invalid }" 
+            #text="ngModel" 
+            required 
+            minlength="6" ></textarea>
+          <div *ngIf="modalForm.submitted && text.invalid" class="invalid-feedback">
+            <div *ngIf="text.errors.required">text is required</div>
+            <div *ngIf="text.errors.minlength">text must be at least 6 characters</div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!modalForm.form.valid">Submit</button>
+        <div class="form-group">
+          <label for="Result" class="required"><h2>{{ modalService.getCaptcha() }}</h2></label>
+          <input 
+            type="number" 
+            class="form-control" 
+            name="Result" 
+            [(ngModel)]="userData.result" 
+            #Result="ngModel" 
+            [ngClass]="{ 'is-invalid': modalForm.submitted && Result.invalid }" 
+            required 
+            Result />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary">Submit</button>
+        </div>
       </form>
   </div>
 </ng-template>
