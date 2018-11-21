@@ -1,10 +1,16 @@
-# AntiBot
+# Simple Form Validator on Angular 7
+
+<div align="center">
+  <a href="https://github.com/StanislawVictorovich/anti-bot">
+    <img width="150" height="150" src="https://cdn4.iconfinder.com/data/icons/X-Mac/security/png/400/input_validation.png">
+  </a>
+</div>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
