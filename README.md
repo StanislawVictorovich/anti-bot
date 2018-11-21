@@ -1,4 +1,4 @@
-# Simple Form Validator on Angular 7
+# Simple Form Validator on Angular 7 (in modal window)
 
 <div align="center">
   <a href="https://github.com/StanislawVictorovich/anti-bot">
